@@ -63,16 +63,22 @@ with tab_salarios:
     # Cargar datos
     df_sou = pd.read_csv('./dat/work/idescat-salari.csv', sep=";", decimal=",")
 
+    # Asegurar que 'salari' es numérico
+    df_sou["salari"] = pd.to_numeric(df_sou["salari"], errors="coerce")
+
     # Eliminar columna 'status' si existe
     if "status" in df_sou.columns:
         df_sou = df_sou.drop(columns=["status"])
 
-    # Filtrar últimos 5 años
-    ultims_5 = sorted(df_sou["anyy"].unique())[-5]
-    df_filtrat = df_sou[df_sou["anyy"] >= ultims_5]
-    
+    # Agrupar por año para evitar duplicados
+    df_anys = df_sou.groupby("anyy", as_index=False)["salari"].mean()
+
+    # Filtrar últimos 5 años reales
+    df_filtrat = df_anys.tail(5)
+
     st.subheader("Evolució del salari (últims 5 anys)")
 
+    # Gráfico de barras verticales
     fig_sal = px.bar(
         df_filtrat,
         x="anyy",
@@ -80,7 +86,14 @@ with tab_salarios:
         color="anyy",
         title="Salari mitjà (últims 5 anys)"
     )
+
+    # Ajustar rango del eje Y si cal
+    fig_sal.update_yaxes(range=[0, 30000], tickvals=[0, 15000, 20000, 25000, 30000])
+
     st.plotly_chart(fig_sal, use_container_width=True)
+
+    
+
 #--------------------------------------------------------NOW
 
     st.subheader("Evolució del salari per franja d'edat (últims 5 anys)")

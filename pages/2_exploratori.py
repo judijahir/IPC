@@ -66,7 +66,7 @@ def mostrar_ipc():
 
     st.pyplot(fig)
     
-    st.subheader("Evolució de l'IPC (últims 5 anys)")
+    st.subheader("Evolució de l'IPC des del 2020")
    
 
 
@@ -85,7 +85,7 @@ def mostrar_ipc():
             "anyy": "Any",
             "ipc": "IPC"
         },
-        title="Distribució de l'IPC per categoria a partir del 2020"
+        title="Distribució de l'IPC per any de totes les categoria a partir del 2020"
     )
 
     st.plotly_chart(fig, use_container_width=True)
@@ -171,8 +171,14 @@ def mostrar_salari():
     st.plotly_chart(fig, use_container_width=True)
 
 #---------------------------------------------------------------Text
-    st.write("lllllllllllllllll")
+    st.write("Aquest Boxplot calcula la mitjana anual del salari agrupant les dades per any. Es genera els gràfics que permeten identificar:  ")
+    st.write("""La mediana del salari mitjà anual.
 
+La variabilitat entre anys.
+
+La presència de possibles valors atípics (outliers).
+
+L’amplitud interquartílica, que indica la dispersió de les mitjanes.""")
     
 #_________________________________________________________ INICIO DEL PROGRAMA
 

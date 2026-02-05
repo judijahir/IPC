@@ -57,8 +57,8 @@ y_pred = modelo.predict(X)
 
 fig, ax = plt.subplots()
 
-ax.scatter(df["ipc"], df["salari"], color="red", label="Datos reales")
-ax.plot(df["ipc"], y_pred, color="blue", label="Regresión lineal")
+ax.scatter(df["ipc"], df["salari"], color="red", label="Dades reals")
+ax.plot(df["ipc"], y_pred, color="blue", label="Regressió lineal")
 
 ax.set_xlabel("IPC")
 ax.set_ylabel("Salari (€)")
@@ -79,3 +79,9 @@ modelo_ipc.fit(X, y_ipc)
 pred_ipc = modelo_ipc.predict(np.array([[any_seleccionat]]))[0]
 
 st.metric(f"Predicció de l'IPC per a {any_seleccionat}", round(pred_ipc, 2), border = True)
+
+st.write("""L’objectiu del model és estimar l’evolució futura del salari a partir de la variable temporal any, utilitzant un model de regressió lineal simple. Aquest enfocament permet obtenir una predicció aproximada del salari per a anys futurs i analitzar la tendència general observada en les dades històriques.
+L’usuari pot seleccionar un any entre 2025 i 2030. El model calcula la predicció corresponent i la mostra de manera clara.""")
+
+
+

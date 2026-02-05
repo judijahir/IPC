@@ -8,7 +8,9 @@ st.set_page_config(
 
 st.write("# Projecte Final! 👋")
 
-st.write(
-    """Aqui anirà la consulta """
-)
+
+st.title("📊 Anàlisi de l'IPC i els Salaris")
+
+st.image("./img/portada.jpg", use_column_width=None)
+
 
