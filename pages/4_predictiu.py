@@ -8,6 +8,7 @@ st.title("📈 Models de regressió: Any i IPC")
 
 # --- Càrrega del CSV ---
 df = pd.read_csv('./dat/work/consolidat.csv', sep=";", decimal=",")
+df["anyy"] = df["anyy"].astype(int)
 
 # Crear pestanyes
 tab1, tab2 = st.tabs(["📅 Regressió ANY → SALARI", "📊 Regressió IPC → SALARI"])
@@ -102,3 +103,4 @@ with tab2:
     Aquesta regressió analitza si existeix relació entre la inflació (IPC) i el salari.
     La recta mostra la tendència: si és positiva, els salaris tendeixen a pujar quan l’IPC augmenta.
     """)
+
